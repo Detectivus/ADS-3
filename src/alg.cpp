@@ -20,24 +20,24 @@ unsigned int collatzLen(uint64_t num) {
   unsigned int len = 1;
   uint64_t n = num;
   while (n != 1) {
-      if (n % 2 == 1)
-        n = 3 * n + 1;
-      else
-        n = n / 2;
-      len += 1;
+    if (n % 2 == 1) 
+      n = 3 * n + 1;
+    else 
+      n = n / 2;
+    len += 1;
   }
   return len;
 }
 
-unsigned int seqCollatz(unsigned int *maxlen, uint64_t lbound, uint64_t rbound) {
+unsigned int seqCollatz(unsigned int *maxlen,
+                        uint64_t lbound,
+                        uint64_t rbound) {
   uint64_t index = lbound;
   *maxlen = 0;
-
   for (uint64_t i = lbound; i <= rbound; i++) {
-    unsigned int current_len = collatzLen(i);
-    if (current_len > *maxlen) {
-      *maxlen = current_len;
-      index = i;
+    if (collatzLen(i) > *maxlen) {
+        *maxlen = collatzLen(i);
+        index = i;
     }
   }
   return index;
