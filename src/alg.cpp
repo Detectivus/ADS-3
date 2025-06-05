@@ -17,14 +17,15 @@ uint64_t collatzMaxValue(uint64_t num) {
 }
 
 unsigned int collatzLen(uint64_t num) {
-  unsigned int len = 1;
-  uint64_t n = num;
-  while (n != 1) {
-      if (n % 2 == 1) 
-        n = 3 * n + 1;
-      else 
-        n = n / 2;
-      len += 1;
+  usigned int len = 1;
+  while (num != 1) {
+    if (num % 2 == 0) {
+      num /= 2;
+    } 
+    else {
+      num = num * 3 + 1;
+    }
+    len += 1;
   }
   return len;
 }
